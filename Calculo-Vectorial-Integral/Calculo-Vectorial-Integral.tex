@@ -22,14 +22,28 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}%%Es para limpiar el documento
-\fancyhead[C]{GO}
+\fancyhead[C]{Calculo Vectorial Integral }
 \fancyhead[R]{\includegraphics[scale=0.07]{figuras/logo}}
 \fancyfoot{}
 \fancyfoot[R]{\thepage}
 \fancyfoot[L]{Bryan Ricardo}
 \renewcommand{\headrulewidth}{0.9pt}
 \renewcommand{\footrulewidth}{0.5pt}
+\usepackage{xcolor}
+\providecommand{\abs}[1]{\lvert#1\rvert}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\usepackage{ mathrsfs }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%INTEGRALES INFERIORES Y SUPERIORES
+\usepackage{amsmath}
+\def\upint{\mathchoice%
+    {\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+    {\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+  \int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
 \begin{titlepage}
 \begin{center}
@@ -43,13 +57,13 @@
 \vspace*{0.5\baselineskip}%%saltos de linea
 \includegraphics[scale=0.5]{figuras/logo}
 \vspace*{2\baselineskip} \\%%saltos de linea
-\textbf{\large MATERIA: GO} \\
+\textbf{\large MATERIA: Calculo Vectorial Integral} \\
 \vspace*{1.5\baselineskip}
-\textbf{\large Docente: Bryan Ricardo Barbosa Olvera} \\
+\textbf{\large Docente: Jorge G. Macias Díaz} \\
 \vspace*{1.5\baselineskip}
-\textbf{\large FECHA DE CREACION: 18 de Junio de 2022} \\  
+\textbf{\large FECHA DE CREACION: 12 de agosto de 2023} \\  
 \vspace*{3\baselineskip}
-\includegraphics[scale=0.5]{figuras/imagen}
+\includegraphics[scale=1.2]{figuras/imagen}
 \vfill
 BRYAN RICARDO BARBOSA OLVERA \\
 \today \\
@@ -57,823 +71,285 @@ BRYAN RICARDO BARBOSA OLVERA \\
 \end{center}
 \end{titlepage}
 
-\section{Introduccion}
-\subsection{ Paquete de terceros }
-//Crear un manejador de modulos  \\
-go mod init holamundo
-//Descargar un paquete \\
-go get rxc.io/quote
 
-\section{Uso de variables y datos}
-\subsection{Declaracion de Variables}
-\begin{verbatim}
-    package main
+\LARGE
+\raggedleft
+\color{blue}
+\raggedright
+\color{black}
+Profesor: Jorge G. Macias Díaz \\
+Edificio: 117 \\
+Oficina: 6:30 - 3:30 \\
+Email: Jemacias@correo.uaa.mx \\
+Email Secundario: jorge.maciasdiaz@edu.uaa.mx \\
+Tel: +4494527006 \\
+\section{INTEGRALES DOBLES} 
 
-import "fmt"
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Un rectangulo en $\mathbb{R} ^2$ es 
+$$ R = \left[ a_1,b_1  \right]  \times \left[ a_2 , b_2 \right] \subseteq \mathbb{R}^2 $$
+Definimos $ A \left( R \right) =  $ $"$Area de $R "$ = $ \left( b_1 -a_1 \right) \left( b_2-a_2 \right)  $ 
+\centering
+\includegraphics[scale=0.5]{figuras/img1 } \\
+\raggedright
+Sean 
+$$\bar{a} = \left( a_1 , a_2 \right) $$
+$$ \bar{b} = \left( b_1 , b_2 \right)  $$
+\color{red}
+Importante:
+\color{black}
+Haaser usa la notacion $ R = \left[ \bar{a} , \bar{b} \right]  $ \\
+\color{red}
+Obs.
+\color{black}
+Si $\mathcal{R} = \{ R \subseteq \mathbb{R} ^2 ; R$ es rectángulo  $\}$ ent \\
+$ \mathcal{A}: \mathcal{R} \rightarrow \mathbb{R} ^+ \cup \{ 0 \} $ es una funcion. \\
 
-func main() {
-	//Declaracion de variables
-	//Forma 1
-	var firstName, lastName string
-	var age int
-	firstName = "Bryan"
-	lastName = "Ricardo"
-	age = 27
-	fmt.Println(firstName, lastName, age)
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Sea $R= \left[ a_1 , b_1 \right] \times \left[ a_2,b_2 \right] \subseteq \mathbb{R}^2 $ una particion de $R$ es  
+$$ \mathcal{P} = \mathcal{P}_1 \times \mathcal{P}_2 \ \text{con} $$
+$ \mathcal{P}  $ es particicon de $[a_1,b_1]$ \\
+$ \mathcal{P}  $ es particicon de $[a_2,b_2]$ \\
+\newpage
+Concretamente, Si 
+$$ \mathcal{P}_1: a_1=x_0 < x_1 < \cdots < x_m = b_1 $$
+$$ \mathcal{P}_2: a_2=y_0 < y_1 < \cdots < y_n = b_2$$
+$$ \mathcal{P}= \{ \left( x_i , y_j \right) \in \mathbb{R} ^2 \textbar i=0,1,\cdots ,m ; j=0,1,\cdots ,n  \} $$
+\centering
+\includegraphics[scale=0.7]{figuras/img2 } \\
+\raggedright
+Definimos  
+$R_{ij} = \left[ x_{i-1} , x_i \right] \times [y_{j-1}, y_j] \ \forall \ i=1,\cdots ,m \ \forall \ j=1, \cdots, n  $  \\ 
+\color{red} Obs. \color{black} $ R = \cup_{i=1}^{m} \cup_{j=1}^{n}R_{ij} $ \\
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Definimos la norma de $\mathcal{P}$ como 
+$$ \abs{  \mathcal{P} } = \text{max} \{ \abs{ \mathcal{P}_1 , \mathcal{P}_2 } \} $$
+$$ \abs{\mathcal{P}_1} = \text{max} \{ x_i -x_{i-1} \textbar i=1,\cdots, m  \} $$
+$$ \abs{\mathcal{P}_2} = \text{max} \{ y_j -y_{j-1} \textbar j=1,\cdots, n  \} $$
+\color{red} Obs \color{black} Con la notacion de la definicion anterior 
+$$ \mathcal{A} \left( R \right) = \sum_{i=1}^{m} \sum_{j=1}^{n} \mathcal{A} \left( R_{ij} \right)  $$
+\color{red} Dem. \color{black} \\
+$$ 
+\sum_{i=1}^{m} \sum_{j=1}^{n} \left( \mathcal{A} \left( R_{ij} \right) \right) = 
+\sum_{i=1}^{m} \sum_{j=1}^{n} \left( x_i - x_{i-1} \right) \left( y_j - y_{j-1} \right) =
+$$
+$$
+= \sum_{i=1}^{m} \left( x_i-x_{i-1} \right)   \sum_{j=1}^{n}  \left( y_j - y_{j-1} \right) = 
+\sum_{i=1}^{m} \left( x_i-x_{i-1} \right)  \left( b_2 -a_2 \right)  = 
+$$
+$$
+= \left( b_2-a_2 \right)   \sum_{i=1}^{m} \left( x_i-x_{i-1} \right)  = 
+ \left( b_2-a_2 \right)  \left( b_1-a_1 \right) =
+ \mathcal{A} \left( R \right)  \ 
+$$
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
 
-	/*
-		//FORMA 2
-		var (
-			firstName , lastName string
-			age int
-		)
-		firstName = "Bryan"
-		lastName = "Ricardo"
-		age = 27
-		//FORMA 3
-		var firstName, lastName, age = "Bryan", "Ricardo", 19
-		//FORMA 4
-		firstName, lastName, age:= "Bryan", "Ricardo", 19
-	*/
-}
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Definimos 
+$$ \wp \left( R \right) = \{ \mathcal{P} \textbar \mathcal{P} \text{ particion de  } R \}  $$
 
-\end{verbatim}
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Sea  $R$ un rectangulo $R = \left[ a_1,b_1 \right] \times [a_2,b_2] \subseteq \mathbb{R} ^2$. \\
+Sean $\mathcal{P} , \mathcal{P}^{\prime} \subset \wp \left( R \right)  $ \\
+Diga  
+$$ \mathcal{P} = \mathcal{P}_1 \times \mathcal{P}_2 \wedge  \mathcal{P}^{\prime} = \mathcal{P}_1^{\prime} \times 
+\mathcal{P}_2^{\prime} $$
+decimos $\mathcal{P}^{\prime}$ es refinamiento de $\mathcal{P}$ \\
+Si $\mathcal{P}_1 \subseteq \mathcal{P}_1^{\prime} \wedge \mathcal{P}_2 \subseteq \mathcal{P}_2^{\prime}$ \\
+Notacion: $\mathcal{P} \subseteq \mathcal{P}^{\prime}$ \\
+\color{red} Obs. \color{black} En lo que sigue: 
+$$ R = \left[ a_1, b_1 \right] \times \left[ a_2, b_2 \right]  \subseteq \mathbb{R}^2 \wedge f: R \rightarrow 
+\mathbb{R} \ \ \  \text{es acotada} $$
+Mas aún, $m,M \in \mathbb{R} \ni $ 
+$$ \forall \ x \in \mathbb{R} \ : m \leq f \left( x \right) \leq M $$
+
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Sea $\mathcal{P} = \mathcal{P_1} \times \mathcal{P_2} \in \wp \left( \mathbb{R} \right)  $ \\
+Diga 
+$$\mathcal{P}_1: a_1 =x_0 <x_1< \cdots < x_m = b_1  $$
+$$\mathcal{P}_2: a_2 =y_0 <y_1< \cdots < y_m = b_2  $$
+Definimos 
+$$ L \left( f, \mathcal{P} \right) = "\text{Suma inferior de $f$ con respecto a } \mathcal{P} " $$
+$$ = \sum_{i=1}^{m} \sum_{j=1}^{n} m_{ij} \left( f \right) \mathcal{A} \left( R_{ij} \right)  $$
+con $ m_{ij} \left( f \right) = \text{inf} \{ f \left( x \right) \textbar x \in R_{ij} \}   $ 
+\newpage
+Definimos 
+$$ U \left( f, \mathcal{P} \right) = "\text{Suma superior de $f$ con respecto a } \mathcal{P} " $$
+$$ = \sum_{i=1}^{m} \sum_{j=1}^{n} M_{ij} \left( f \right) \mathcal{A} \left( R_{ij} \right)  $$
+con $ M_{ij} \left( f \right) = \text{sup} \{ f \left( x \right) \textbar x \in R_{ij} \}   $ \\
+\color{red} 
+$\mathbf{Lemma.}$
+\color{black} 
+ $\forall \ \mathcal{P} \in \wp \left( R \right) : $
+ $$ m \mathcal{A} \left( R \right) \leq L \left( f,\mathcal{P} \right) \leq U \left( f, \mathcal{P} \right) \leq M \mathcal{A}$$
+\color{red} 
+$\mathbf{Dem.}$ \\
+\color{black} 
+$$ m \mathcal{A} \left( R \right) = 
+m \sum_{i=1}^{m} \sum_{j=1}^{n} \mathcal{A} \left( R_{ij} \right) =    
+ \sum_{i=1}^{m} \sum_{j=1}^{n} m \mathcal{A} \left( R_{ij} \right)     
+$$
+$$
+\leq 
+ \sum_{i=1}^{m} \sum_{j=1}^{n} m_{ij} \left( f \right) \mathcal{A} \left( R_{ij} \right)
+= L \left( f,\mathcal{P} \right) $$
+$$
+\leq \sum_{i=1}^{m} \sum_{j=1}^{n} M_{ij} \left( f \right) \mathcal{A} \left( R_{ij} \right) 
+= U \left( f, \mathcal{P} \right) 
+$$
+$$
+\leq
+\sum_{i=1}^{m} \sum_{j=1}^{n} M  \mathcal{A} \left( R_{ij} \right)  = 
+M \sum_{i=1}^{m} \sum_{j=1}^{n}  \mathcal{A} \left( R_{ij} \right) = 
+M \mathcal{A} \left( R \right) 
+$$
+$$ \therefore
+m \mathcal{A} \left( R \right) \leq L \left( f ,\mathcal{P} \right) \leq 
+U \left( f,\mathcal{P} \right)  \leq M \mathcal{A} \left( R \right) 
+$$
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Definimos 
+$$ \mathscr{L} \left( f \right) = " \text{Conjunto de sumas superiores de  } f "  $$
+$$ = \{ L \left( f, \mathcal{P} \right) \textbar \mathcal{P} \in \wp \left( R \right)   \}  $$
+$$ \mathscr{U} \left( f \right) = " \text{Conjunto de sumas inferiores de  } f "  $$
+$$ = \{ U \left( f, \mathcal{P} \right) \textbar \mathcal{P} \in \wp \left( R \right)   \}  $$
+\newpage
+\color{red} 
+$\mathbf{Obs.}$
+\color{black} 
+Del lema anterior. 
+$$ \forall L \left( f,\mathcal{P} \right) \in \mathscr{L} \left( f \right) : L \left( f , \mathcal{P} \right) \subseteq
+ M \mathcal{A} \left( R \right)  $$
+Asi, $ \emptyset \neq \mathscr{L} \left( f \right)  $ acotado sumeriormente 
+$\Rightarrow \ \exists \ \text{sup } \mathscr{L} \left( f \right) $ \\
+Similarmente $\exists \ \text{inf} \mathscr{U} \left( f \right)  $ \\
+\color{red} 
+$\mathbf{Def.}$
+\color{black} 
+Definimos 
+\begin{gather*}
+    \upint_R f = "\text{Integral inferior de } f \text{ sobre } R "= \text{ sup } \mathscr{L} \left( f \right)    \\
+    \lowint_R f = "\text{Integral superior de } f \text{ sobre } R "= \text{ inf } \mathscr{U} \left( f \right)    \\ 
+\end{gather*}
+
+\color{red} 
+$\mathbf{Lemma}$
+\color{black} 
+Sean $\mathcal{P} , \mathcal{P} ^{\prime} \in \wp \left( R \right) \ni \mathcal{P} \subseteq \mathcal{P} ^{\prime} $. Entonces
+$$ m \mathcal{A} \left( R \right) \leq L \left( f ,\mathcal{P} \right) \leq L \left( f , \mathcal{P} ^{\prime} \right) 
+\leq  U \left( f,\mathcal{P}^{\prime}  \right) \leq U \left( f , \mathcal{P} \right) \leq M \mathcal{A} \left( R \right)    $$
+\color{red} 
+$\mathbf{Dem.}$ \\
+\color{black} 
+Sean \\
+$$\mathcal{P} = \mathcal{P}_1 \times \mathcal{P}_2 \in \wp \left( R \right)  $$
+$$\mathcal{P}^{\prime} = \mathcal{P}_1^{\prime} \times \mathcal{P}_2^{\prime} \in \wp \left( R \right)  $$
+\color{red} 
+$\mathbf{Caso1.}$
+\color{black} 
+$\mathcal{P}_1 = \mathcal{P}_1^{\prime}$. Sea  \\ 
+$n = $ card $ \{ \mathcal{P}_2^{\prime} \backslash  \mathcal{P}_2  \} \ \in \ \mathbb{N} \cup \ \{ 0 \} $
+Usaremos inducción sobre  $n$ \\
+Si $n=0$, Ent. $\mathcal{P}_2 ^{\prime}= \mathcal{P}_2 $ \\ 
+$ \mathcal{P} ^{\prime} = \mathcal{P} $, Ent. 
+$$ L \left( f, \mathcal{P} \right) = L \left( f, \mathcal{P} ^{\prime} \right) \leq  U \left( f, \mathcal{P}^{\prime}  \right) 
+= U \left( f, \mathcal{P}  \right) $$
+\color{red} 
+$\mathbf{Paso General:}$
+\color{black} 
+Supongamos la conclusion valida para algun $n \in \mathbb{N} \cup \{0 \} $ \\ 
+veremos que es valido para $n+1$. Sea $ \mathcal{P}_2 ^{\prime}  $ refinamiento de $\mathcal{P}_2 \ \ni$  \\
+$ n+1 = \text{ card } \left( \mathcal{P}_2 ^{\prime} \backslash  \mathcal{P}_2  \right)   $ \\
+\newpage
+Definimos $\mathcal{P}_2 \subseteq \mathcal{P}_2^{\prime \prime} \subseteq \mathcal{P}_2^{\prime} $
+con  \\
+card $ \left( \mathcal{P}_2 ^{ \prime \prime }  \backslash \mathcal{P}_2  \right) = n \ \wedge $ 
+card $ \left( \mathcal{P}_2 ^{ \prime  }  \backslash \mathcal{P}_2^{\prime \prime}  \right) = 1  $ \\
+por hipótesis  de inducción:
+$$ L \left( f, \mathcal{P}  \right) \leq L \left( f, \mathcal{P} ^{\prime \prime}   \right) \leq 
+U \left( f, \mathcal{P}^{\prime \prime}  \right) \leq U \left( f , \mathcal{P}  \right)   $$
+donde $ \mathcal{P}^{\prime \prime} = \mathcal{P}_2  \times  \mathcal{P}_2^{\prime \prime}   $ \\ 
+Digo 
+$$ \mathcal{P}_2^{\prime \prime} : a_2 = y_0 <y_1< \cdots < y_{j_0} < y_{j_{0+1}} < \cdots < y_p = b_2 $$
+$$ \mathcal{P}_2^{\prime } : a_2 = y_0 <y_1< \cdots < y_{j_0}<y^{*} < y_{j_{0+1}} < \cdots < y_p = b_2 $$
+$$ \mathcal{P}_1 : a_1 = x_0 <x_1 < x_m = b_1 $$
+\color{red} 
+$\mathbf{Obs.}$
+\color{black} 
+$$ L \left( f, \mathcal{P}  \right) = \sum_{i=1}^{m} \sum_{j=1}^{p} 
+\left( \text{inf} _{ \left[ x_{i-1} , x_i \right] \times \left[ y_{j-1}, y_j \right]   } \right) \cdot  \mathcal{A} 
+ \left( \left[ x_{i-1}, x_i \right] \times \left[ y_{j-1} , y_j \right]   \right)   $$
+$$
+= \sum_{i=1}^{m}  \sum_{{j=1,j\neq j_0 +1} } ^{p} \left( \text{inf} _ { \left[ x_{i-1}, x_i \right] \times \left[ y_{j-1}, y_j \right]  } \right)  
+\cdot \mathcal{A} \left( \left[ x_{i-1} , x_i \right] \times \left[ y_{j-1},y_j \right]   \right)  
+$$
+$$
++  \sum_{i=1}^{m} \left( \text{inf}_{ \left[ x_{i-1},x_i \right] \times \left[ y_{j_0} , y_{j_0 +1} \right]   } \right)  \cdot 
+\mathcal{A} \left( \left[ x_{i-1} , x_i \right] \times \left[ y_{j_0} , y_{j_0 +1} \right]   \right)   
+$$
+
+$$
+= \sum_{i=1}^{m}  \sum_{{j=1,j\neq j_0 +1} } ^{p} \left( \text{inf} _ { \left[ x_{i-1}, x_i \right] \times \left[ y_{j-1}, y_j \right]  } \right)  
+\cdot \mathcal{A} \left( \left[ x_{i-1} , x_i \right] \times \left[ y_{j-1},y_j \right]   \right)  
+$$
+$$
++  \sum_{i=1}^{m} \left( \text{inf}_{ \left[ x_{i-1},x_i \right] \times \left[ y_{j_0} , y^{*} \right]   } \right)  \cdot 
+\mathcal{A} \left( \left[ x_{i-1} , x_i \right] \times \left[ y_{j_0} , y^{*} \right]   \right)   
+$$ 
+$$ + \sum_{i=1}^{m} \left( \text{inf}_{ \left[ x_{i-1},x_i \right] \times \left[ y^{*} , y_{j_0+1} \right]   } \right)  \cdot 
+\mathcal{A} \left( \left[ x_{i-1} , x_i \right] \times \left[ y^{*} , y_{j_0 +1} \right]   \right)   
+$$
+$$ = L \left( f , \mathcal{P}^{\prime}  \right) \leq U \left( f, \mathcal{P} ^{\prime}  \right) \leq U \left( f, \mathcal{P} ^{\prime}  \right) \leq U \left( f , \mathcal{P} ^{ \prime \prime }  \right)     $$
+(El caso 1 se sigue por inducción) 
+
+\color{red} 
+$\mathbf{Caso 2:}$
+\color{black} 
+$ \mathcal{P}_2  = \mathcal{P}_2 ^{\prime} \ \wedge \ \mathcal{P}_1 \subseteq \mathcal{P} _1 ^{\prime}  $ similar al caso 1
 
 \newpage
+\color{red} 
+$\mathbf{Caso3:}$
+\color{black} 
+$ \mathcal{P}_1 \subseteq \mathcal{P}_1 ^{\prime} \ \wedge \ \mathcal{P}_2 \subseteq \mathcal{P}_2 ^{\prime} $ \\
+$$ \mathcal{P} = \mathcal{P}_1 \times \mathcal{P}_2    $$
+$$ \mathcal{P} ^{\prime} = \mathcal{P}_1 \times \mathcal{P}_2^{\prime}    $$
+Definimos $\mathcal{P} ^{\prime \prime} = \mathcal{P}_1 \times \mathcal{P}_2 ^{\prime}   $ de los casos anteriores
+$$ L \left( f , \mathcal{P} \right) \leq L \left( f, \mathcal{P} ^{\prime \prime}  \right) \leq 
+U \left( f, \mathcal{P }^{\prime}  \right) \leq U \left( f, \mathcal{P}^{\prime \prime}  \right) \leq 
+U \left( f, \mathcal{P}  \right)  $$
+\begin{flushright}
+$\blacksquare$
+\end{flushright}
+
+\color{blue}
+\begin{flushright}
+9/8/2023
+\end{flushright}
+\color{black}
+\color{red} 
+$\mathbf{Lemma}$
+\color{black} 
+Sea $R \subseteq R^2$ rectángulo, $f : R \rightarrow \mathbb{R} $ acotada y $m,M \ \in \ \mathbb{R} \ \ni$ 
 
-\subsection{Declaracion de constantes}
-\begin{verbatim}
-package main
-
-import "fmt"
-
-//Declarar constantes
-
-const Pi = 3.14
-
-// Declarar varias constantes
-const (
-	x = 100
-	y = 0b1010 //binario
-	z = 0o12   //Octal
-	w = 0xFF   //Hexadecimal
-)
-
-const (
-	Domingo = iota + 1
-	Lunes
-	Martes
-	Miercoles
-	Jueves
-	Viernes
-	Sabado
-)
-
-func main() {
-	fmt.Println(Pi)
-	fmt.Println(x)
-	fmt.Println(y)
-	fmt.Println(z)
-	fmt.Println(w)
-	fmt.Println(Viernes)
-}
-\end{verbatim}
-\subsection{Tipos de datos Basicos}
-
-\begin{verbatim}
-package main
-
-import "fmt"
-
-//TIPOS DE DATOS
-
-func main() {
-
-	var integer int8 = 127     //ENteros de 8 bits
-	var integer2 uint8 = 127   //Enteros no  negativos de 8bits
-	var float float32 = 9.8    // Tambien existe flaot64
-	var valuesBool bool = true //Valor booleano
-	fullName := "Bryan Ricardo \t (alias \" rinux\" ) \n"
-	fmt.Println(fullName)
-	var valorByte byte = 'a'
-
-	s := "Hola"
-	fmt.Println(s[0]) //Imprime el byte
-}
-\end{verbatim}
-
-\newpage
-\subsection{Conversion de datos}
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-	"strconv"
-)
-
-//TIPOS DE DATOS
-
-func main() {
-
-	//Conversion de enteros y flotantes
-	var integer16 int16 = 50
-	var integer32 int32 = 100
-	fmt.Println(int32(integer16) + integer32) //Es la misma logica de conversion para int y float
-
-	//Convertir una cadena a un entero
-	s := "100"
-	i, _ := strconv.Atoi(s) //La barra es para no guardar el error
-	fmt.Println(i + 10)
-
-	//Conversio de enteros a cadenas
-	n := 42
-	s = strconv.Itoa(n) //Solo recibe te tipo int
-	//Si es de tipo int8 es preferible convertilo a int
-}
-\end{verbatim}
-\subsection{Funcion fmt}
-
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-)
-
-//TIPOS DE DATOS
-
-func main() {
-
-	var name string
-	var age int
-	fmt.Print("Ingrese su nombre: ")
-	fmt.Scanln(&name) //Lee datos
-	fmt.Print("Ingrese su edad: ")
-	fmt.Scanln(&age)
-
-	//Imprimir varios valores
-	fmt.Printf("Hola, me llamo %s y tengo %d años.\n", name, age) //Si no se conoce el dato que se va ingresar se puede utilizar %v
-
-	fmt.Printf("Los tipos de datos son: %T %T \n", name, age) //Si no se conoce el dato que se va ingresar se puede utilizar %v
-
-}
-\end{verbatim}
-\newpage
-
-\subsection{Paquete Math}
-
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-	"math"
-)
-
-func main() {
-	fmt.Println(math.Pi)
-	fmt.Println(math.E)
-	fmt.Println(math.Pow(2, 5)) //Potencia
-	//Exiten aun mas funciones de math
-}
-\end{verbatim}
-
-\section{Control de flujos}
-\subsection{Declaracion If Else}
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-	"time"
-)
-
-func main() {
-	/*
-	t := time.Now()
-	hora := t.Hour()
-	
-	//METODO 1
-	fmt.Println(t)
-	fmt.Println(t.Hour())
-
-	if hora < 12 {
-		fmt.Println("Mañana")
-	} else if hora < 17 {
-		fmt.Println("Tarde")
-	} else {
-		fmt.Println("Noche")
-	}
-	*/
-	
-	//METODO 2
-	if t:= hora < 12 {
-		fmt.Println("Mañana")
-	} else if hora < 17 {
-		fmt.Println("Tarde")
-	} else {
-		fmt.Println("Noche")
-	}
-	
-}
-\end{verbatim}
-\newpage
-\subsection{Switch}
-
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-	"runtime"
-)
-
-func main() {
-
-	os := runtime.GOOS //Nos da el SO en el que se esta ejecutando
-
-	switch os {
-	case "windows":
-		fmt.Println("Go run -> Windows")
-	case "linux":
-		fmt.Println("Go run -> Linux")
-	case "darwin":
-		fmt.Println("Go run -> Ios")
-	default:
-		fmt.Println("Go run -> Otro OS")
-	}
-
-}
-\end{verbatim}
-
-\subsection{For}
-\begin{verbatim}
-package main
-
-import "fmt"
-
-func main() {
-
-	for i := 1; i <= 10; i++ {
-		if i == 5 {
-			//break se para aqui
-			continue //Continua
-		}
-		fmt.Println(i)
-	}
-
-}
-\end{verbatim}
-\newpage
-\subsection{Funciones}
-
-\begin{verbatim}
-package main
-
-import "fmt"
-
-func main() {
-
-	saludo := hello("Bryan")
-	fmt.Println(saludo)
-	sum, mul := calc(4, 5)
-	fmt.Println("La suma es: ", sum)
-	fmt.Println("La multiplicacion es: ", mul)
-}
-
-func hello(name string) string /*Lo que va a retornar*/ {
-
-	return "Hola, " + name
-}
-
-func calc(a, b int) (int, int) /*Devuelve dos valores enteros*/ {
-	sum := a + b
-	mul := a * b
-	return sum, mul
-}
-
-/*
-Forma 2
-func calc(a, b int) (sum, mul int){}
-	sum = a + b
-	mul = a * b
-	return sum, mul
-}
-*/
-\end{verbatim}
-
-\newpage
-\section{Estructura de datos}
-\subsection{Mátrices}
-
-\begin{verbatim}
-package main
-
-import "fmt"
-
-func main() {
-	var a [5]int
-	a[0] = 10
-	a[1] = 10
-	var b = [5]int{10, 20, 30, 40, 50}
-	//var b = [...]int{10, 20, 30, 40, 50} Se usa cuando no sabemos la cantidad de datos que se van a guardar
-
-	fmt.Println(a, b)
-	for i := 0; i < len(b); i++ {
-		fmt.Println(b[i])
-	}
-
-	//Forma 2 para iterar
-	for index, value := range b {
-		fmt.Printf("Indice: %d, Valor: %d \n ", index, value)
-	}
-
-	var matriz = [3][3]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
-
-	fmt.Println(matriz)
-
-}
-\end{verbatim}
-
-
-\subsection{Rebandas}
-\begin{verbatim}
-package main
-
-import "fmt"
-
-func main() {
-	diasSemana := []string{"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"}
-	diaRebanada := diasSemana[0:5]
-
-	//Agregar elementos
-	diaRebanada = append(diaRebanada, "Viernes", "Sabado")
-	fmt.Println(diaRebanada)
-
-	//Quitar elementos
-	diaRebanada = append(diaRebanada[0:2], diaRebanada[3:]...)
-
-	fmt.Println(diaRebanada)
-	fmt.Println(len(diaRebanada))
-	fmt.Println(cap(diaRebanada)) //Capacidad que puede guardar
-
-	//Crear rebanadas con la palabra make
-	nombres := make([]string, 5, 10)
-	nombres[0] = "Bryan"
-	fmt.Println(nombres)
-	//Copiando los elementos con la palabra copy
-	rebanada1 := []int{1, 2, 3, 4, 5}
-	rebanada2 := make([]int, 5)
-	copy(rebanada2, rebanada1) //Retorna la cantidad de elementos que se han copeado
-
-	fmt.Println(rebanada1)
-	fmt.Println(rebanada2)
-}
-
-\end{verbatim}
-
-\subsection{Mapas}
-\begin{verbatim}
-package main
-
-import "fmt"
-
-func main() {
-	colors := map[string]string{
-		"rojo":  "#FF0000",
-		"verde": "#00FF00",
-		"azul":  "#0000FF",
-	}
-
-	fmt.Println(colors)
-	fmt.Println(colors["rojo"])
-	//Agregar un nuevo elemento
-	fmt.Println(colors["rojo"])
-	colors["negro"] = "#000000"
-	fmt.Println(colors)
-	//Nota, lo ordena alfabeticamente en automatico
-
-	//Verificar si existe
-	valor, ok := colors["blanco"] //Verifica si existe
-	//ok: retorna un valor de tipo bool
-	if ok {
-		fmt.Println("Si existe la clave: ", valor)
-	} else {
-		fmt.Println("No existe esta clave")
-	}
-	//Eliminar un elementto
-	delete(colors, "azul")
-	fmt.Println(colors)
-
-	//Iterar los valores
-	for clave, valor := range colors {
-		fmt.Printf("Clave: %s, valor: %s \n", clave, valor)
-	}
-
-}
-\end{verbatim}
-\newpage
-\subsection{Estructuras}
-\begin{verbatim}
-package main
-
-import "fmt"
-
-// Estructura
-type Persona struct {
-	nombre string
-	edad   int
-	correo string
-}
-
-func main() {
-
-	var p Persona
-	p.nombre = "Bryan"
-	p.edad = 19
-	p.correo = "bryanrifardo@gmail.com"
-
-	/*
-		FORMA 2
-		p:= Persona{"Bryan", 19, "bryanrifardo@gmail.com"}
-	*/
-
-	fmt.Println(p)
-
-}
-\end{verbatim}
-
-\subsection{Punteros y metodos}
-\begin{verbatim}
-package main
-
-import "fmt"
-
-type Persona struct {
-	nombre string
-	edad   int
-	correo string
-}
-
-// Metodo
-func (p *Persona) diHola() {
-	fmt.Println("Hola, mi nombre es", p.nombre)
-}
-
-func main() {
-	var x int = 10
-	fmt.Println(x)
-
-	editar(&x) //ENviar la referencia de la memoria
-	fmt.Println(x)
-
-	//Crear una instancia del metodo
-	p := Persona{"Bryan", 19, "bryanrifardo@gmail.com"}
-	p.diHola()
-}
-
-func editar(x *int) {
-	*x = 20
-}
-\end{verbatim}
-
-\section{Control de errores}
-\subsection{Manejo de errores}
-\begin{verbatim}
-package main
-
-import (
-	"errors"
-	"fmt"
-)
-
-// Creando una funcion que puede enviar un error
-func divide(dividendo, divisor int) (int, error) {
-	if divisor == 0 {
-		return 0, errors.New("No se puede dividir por 0")
-		/*SEGUNDA FORMA
-		return 0, fmt.Errorf("No se puede dividir por 0")
-		*/
-	}
-	return dividendo / divisor, nil
-}
-
-func main() {
-	/*
-		EJemplo de un manejo de un error
-		str := "123f"
-		num, err := strconv.Atoi(str)
-		//Manejar un error
-		if err != nil {
-			fmt.Println("Error", err)
-			return
-		}
-
-		fmt.Println("Número:", num)
-	*/
-	//Lammando la funcion divide
-	result, err := divide(10, 0)
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-	fmt.Println("Resultado: ", result)
-}
-
-\end{verbatim}
-\newpage
-\subsection{Defer}
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-	"os"
-)
-
-func main() {
-	/*defer fmt.Println(3) //Posponer una  ejecucion
-	defer fmt.Println(2)
-	defer fmt.Println(1)
-	*/
-	file, err := os.Create("hola.txt") //Crea un archivo
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	defer file.Close()
-	/*
-		Lo enterior se puede utilizar para cerrar el flujo, tambien
-		se utiliza para cerrar una base de datos
-	*/
-
-	_, err = file.Write([]byte("Hola, Bryan Ricardo"))
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-}
-\end{verbatim}
-\subsection{Panic y Recover}
-
-\begin{verbatim}
-
-package main
-
-import "fmt"
-
-func divide(dividiendo, divisor int) {
-
-	//Capturar el error sin interferir en el programa
-	defer func() { //Funcion anonima
-		if r := recover(); r != nil {
-			fmt.Println(r)
-		}
-	}()
-
-	validateZero(divisor)
-	fmt.Println(dividiendo / divisor)
-}
-func validateZero(divisor int) {
-	if divisor == 0 {
-		panic("No puedes dividir por cero") //Cuando se ejecuta
-		//Entra en un modo de panico, pero se ejecuta lo anterior
-		//Proboca un panico cuando ocurre un error
-	}
-}
-
-func main() {
-	divide(100, 10)
-	divide(200, 25)
-	divide(34, 0)
-	divide(100, 4)
-}
-\end{verbatim}
-\subsection{Registro de errores}
-\begin{verbatim}
-package main
-
-import (
-	"log"
-	"os"
-)
-
-func main() {
-	//log.Fatal("¡Oye, soy un registro de errores!")
-	//Imprime el registro pero detiene el programa
-	//log.Panic("Panico")
-	//Imprime el panico pero detiene el programa
-
-	//Guardar errores
-
-	file, err := os.OpenFile("info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	defer file.Close()
-	log.SetOutput(file)
-	log.Print("¡Oye,soy un Log")
-
-}
-\end{verbatim}
-\newpage
-\section{Crear un modulo-Proyecto}
-1.mkdir greetings \\
-2.cd greetings/  \\
-3.go mod init github.com/Bryan-Ricardo/greetings //Creando el manejador de modulos \\
-4.nvim greetings.go //Creando un archivo .go \\
-5.Escribir lo siguiente: \\
-\begin{verbatim}
-package greetings
-
-import "fmt"
-
-//Hello
-
-func Hello(name string) string {
-	message := fmt.Sprintf("¡Hola, %v! ¡Bienvenido!", name)
-	return message
-}
-
-\end{verbatim}
-
-6.Salir del documento \\
-7.Ejecutar cd .. \\para salir de la carpeta \\
-8.mkdir hello \\ 
-9.cd hello \\
-10.go mod init hello \\
-11.nvim main.go \\
-12. Escribir lo siguiente 
-\begin{verbatim}
-package main
-import (
-	"fmt"
-
-	"github.com/Bryan-Ricardo/greetings"
-)
-
-func main() {
-	message := greetings.Hello("Bryan")
-	fmt.Println("vim-go")
-}
-
-\end{verbatim}
-
-13.Salir del documento \\ 
-14.go mod edit -replace github.com/Bryan-Ricardo/greetings=../greetings\\
-15.go mod tidy // Guardar los cambios \\
-16.go run //Ejecutar el programa
-
-\newpage
-
-\subsection{Agregar un manejador de errores}
-1.En el archivo greetings: 
-
-\begin{verbatim}
-package greetings
-
-import (
-	"errors"
-	"fmt"
-)
-
-//Hello
-func Hello(name string) (string, error) {
-
-	if name == "" {
-		return "", errors.New("Nombre vacío")
-	}
-
-	message := fmt.Sprintf("¡Hola, %v! ¡Bienvenido!", name)
-	return message, nil
-}
-\end{verbatim}
-
-2.En el archivo hello: 
-
-\begin{verbatim}
-package main
-
-import (
-	"fmt"
-	"log"
-
-	"github.com/Bryan-Ricardo/greetings"
-)
-
-func main() {
-	log.SetPrefix("greetings: ")
-	log.SetFlags(0)
-
-	message, err := greetings.Hello("")
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Println(message)
-}
-\end{verbatim}
-
-\newpage
-\subsection{Devolver un saludo aleatorio}
-1.Escribir lo siguiente en greetings
-\begin{verbatim}
-package greetings
-
-import (
-	"errors"
-	"fmt"
-	"math/rand"
-)
-
-//Hello
-
-func Hello(name string) (string, error) {
-
-	if name == "" {
-		return "", errors.New("Nombre vacío")
-	}
-
-	message := fmt.Sprintf(randomFormat(), name)
-	return message, nil
-}
-
-func randomFormat() string {
-
-	formats := []string{
-		"¡Hola, %v! ¡Bienvenido",
-		"¡Qué bueno verte, %v!",
-		"¡Saludo, %v! ¡Encantado de conocerte!",
-	}
-
-	return formats[rand.Intn(len(formats))]
-
-}
-\end{verbatim}
-\newpage
-\section{POO e Interfaces }
-\subsection{Estructuras y metodos}
-1.mkdir library \\
-2.go mod init library \\
-3.nvim main \\
-4.mkdir book \\
-5.cd book \\
-6.nvim book \\
-7.Escribir en book lo siguiente: 
-\begin{verbatim}
-package book
-
-import "fmt"
-
-type Book struct {
-	Title  string
-	Author string
-	Pages  int
-}
-
-// Creando el "Constructor"
-func NewBook(title string, author string, pages int) *Book {
-
-	return &Book{
-		Title:  title,
-		Author: author,
-		Pages:  pages,
-	}
-
-}
-
-func (b *Book) PrintInfo() {
-
-	fmt.Printf(" Title: %s\n Author: %s \n Pages: %d \n", b.Title, b.Author, b.Pages)
-
-}
-\end{verbatim}
-8.Escribir en main lo siguiente: 
-\begin{verbatim}
-    package main
-
-import (
-	"library/book"
-)
-
-func main() {
-	/*
-		Primera forma sin el contructor
-		var myBook = book.Book{
-			Title:  "Mody Dick",
-			Author: "Herman Melville",
-			Pages:  300,
-		}
-
-		myBook.PrintInfo()
-	*/
-	//SEGUNDA FORMA CON EL CONSTRUCTOR
-	myBook := book.NewBook("Mody Dick", "Herman Melville", 300)
-	myBook.PrintInfo()
-}
-\end{verbatim}
 
 \end{document}
