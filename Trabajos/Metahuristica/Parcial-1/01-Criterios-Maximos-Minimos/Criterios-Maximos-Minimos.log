@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.18)  13 AUG 2023 14:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2023.6.18)  13 AUG 2023 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**Calculo-Vectorial-Integral.tex
-(./Calculo-Vectorial-Integral.tex
+**Criterios-Maximos-Minimos.tex
+(./Criterios-Maximos-Minimos.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (/usr/share/texmf-dist/tex/latex/base/article.cls
@@ -339,11 +339,11 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count287
 \l__pdf_internal_box=\box62
 )
-(./Calculo-Vectorial-Integral.aux
+(./Criterios-Maximos-Minimos.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
-\openout1 = `Calculo-Vectorial-Integral.aux'.
+\openout1 = `Criterios-Maximos-Minimos.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
 LaTeX Font Info:    ... okay on input line 47.
@@ -415,75 +415,46 @@ File: figuras/logo.png Graphic file (type png)
 <use figuras/logo.png>
 Package pdftex.def Info: figuras/logo.png  used on input line 58.
 (pdftex.def)             Requested size: 356.83224pt x 194.72702pt.
-<figuras/imagen.jpeg, id=3, 251.94125pt x 201.75375pt>
-File: figuras/imagen.jpeg Graphic file (type jpg)
-<use figuras/imagen.jpeg>
-Package pdftex.def Info: figuras/imagen.jpeg  used on input line 66.
-(pdftex.def)             Requested size: 302.32797pt x 242.10327pt.
+<figuras/imagen.jpg, id=3, 240.9pt x 141.52875pt>
+File: figuras/imagen.jpg Graphic file (type jpg)
+<use figuras/imagen.jpg>
+Package pdftex.def Info: figuras/imagen.jpg  used on input line 66.
+(pdftex.def)             Requested size: 289.07854pt x 169.83363pt.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts
-/enc/dvips/cm-super/cm-super-t1.enc} <./figuras/logo.png> <./figuras/imagen.jpe
-g>]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 89.
+/enc/dvips/cm-super/cm-super-t1.enc} <./figuras/logo.png> <./figuras/imagen.jpg
+>]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 78.
 
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 89.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 78.
 
 
 (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 89
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 78
 .
 
 (/usr/share/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 89
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 78
 .
 
 (/usr/share/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-<figuras/img1.png, id=14, 514.92375pt x 294.09875pt>
-File: figuras/img1.png Graphic file (type png)
-<use figuras/img1.png>
-Package pdftex.def Info: figuras/img1.png  used on input line 95.
-(pdftex.def)             Requested size: 257.46124pt x 147.04901pt.
-File: figuras/logo.png Graphic file (type png)
-<use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 117.
-(pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
+Underfull \hbox (badness 10000) in paragraph at lines 90--95
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 30.86467pt, for example:
-(fancyhdr)                \setlength{\headheight}{30.86467pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
-
-[1 <./figuras/img1.png>]
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 121.
-
-<figuras/img2.png, id=26, 511.9125pt x 277.035pt>
-File: figuras/img2.png Graphic file (type png)
-<use figuras/img2.png>
-Package pdftex.def Info: figuras/img2.png  used on input line 123.
-(pdftex.def)             Requested size: 358.3363pt x 193.92317pt.
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 133.
-
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 134.
+ []
 
 File: figuras/logo.png Graphic file (type png)
 <use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 150.
+Package pdftex.def Info: figuras/logo.png  used on input line 107.
 (pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -493,119 +464,31 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
 
-[2 <./figuras/img2.png>]
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 159.
-
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 188.
-
-File: figuras/logo.png Graphic file (type png)
-<use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 189.
-(pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 30.86467pt, for example:
-(fancyhdr)                \setlength{\headheight}{30.86467pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
-
-[3]
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 193.
-
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 232.
-
-
-LaTeX Warning: Command \textbar invalid in math mode on input line 234.
-
-File: figuras/logo.png Graphic file (type png)
-<use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 235.
-(pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 30.86467pt, for example:
-(fancyhdr)                \setlength{\headheight}{30.86467pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
-
-[4]
-File: figuras/logo.png Graphic file (type png)
-<use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 282.
-(pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 30.86467pt, for example:
-(fancyhdr)                \setlength{\headheight}{30.86467pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
-
-[5]
-File: figuras/logo.png Graphic file (type png)
-<use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 329.
-(pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 30.86467pt, for example:
-(fancyhdr)                \setlength{\headheight}{30.86467pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
-
-[6]
-File: figuras/logo.png Graphic file (type png)
-<use figuras/logo.png>
-Package pdftex.def Info: figuras/logo.png  used on input line 355.
-(pdftex.def)             Requested size: 49.96173pt x 27.26463pt.
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 30.86467pt, for example:
-(fancyhdr)                \setlength{\headheight}{30.86467pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-18.86467pt}.
-
-[7] (./Calculo-Vectorial-Integral.aux
+[1] (./Criterios-Maximos-Minimos.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
 Here is how much of TeX's memory you used:
- 6761 strings out of 476025
- 103664 string characters out of 5796532
- 1862388 words of memory out of 5000000
- 27057 multiletter control sequences out of 15000+600000
- 535773 words of font info for 111 fonts, out of 8000000 for 9000
+ 6663 strings out of 476025
+ 102414 string characters out of 5796532
+ 1860388 words of memory out of 5000000
+ 26994 multiletter control sequences out of 15000+600000
+ 525850 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,17n,62p,267b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf-dist/fonts/type1/public/
-amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs
-10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/
-fonts/type1/public/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
-rm1728.pfb>
-Output written on Calculo-Vectorial-Integral.pdf (8 pages, 220214 bytes).
+ 57i,16n,62p,266b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb></usr/
+share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dis
+t/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/cm-super/sfbx2488.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/
+sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+Output written on Criterios-Maximos-Minimos.pdf (2 pages, 153697 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
