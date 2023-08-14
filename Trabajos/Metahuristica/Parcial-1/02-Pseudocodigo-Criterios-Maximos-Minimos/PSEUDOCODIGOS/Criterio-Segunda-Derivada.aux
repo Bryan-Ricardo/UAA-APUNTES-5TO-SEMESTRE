@@ -1,0 +1,35 @@
+//1-Dar una funcion f diferenciable en (7,9)
+Funcion valorf <- f ( x )
+	valorf<- (x^2) -(16*x) +64 
+Fin Funcion
+
+Funcion valorfp <- fp ( x )
+	valorfp<- (2*x) -16 
+Fin Funcion
+
+Funcion valorfp <- fpp ( x )
+	valorfp<- 2 
+Fin Funcion
+
+Algoritmo CriterioSegundaDerivada
+	//2-Sea c en (7,8) & f'(c)=0
+	c<- 8
+	//3Verificamos que f''(c) exista
+	vFpp<-fpp(c)
+	Si vFpp<>null Entonces
+		//4
+		Si vFpp<0 Entonces
+			Escribir "f tiene un máximo en: ", c
+		SiNo
+			Si vFpp>0 Entonces
+				Escribir "f tiene un mínimo en: ", c
+			SiNo
+				Escribir "f no es maxímo ni mínimo en ",c
+			Fin Si
+		Fin Si
+	SiNo
+		Escribir "No existe la segunda derivada de f en: ",c
+	Fin Si
+	Escribir "Fin del codigo"
+	
+FinAlgoritmo

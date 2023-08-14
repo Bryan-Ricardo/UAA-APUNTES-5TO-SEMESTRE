@@ -1,0 +1,28 @@
+//1- Dar una funcioncontinua en [3,5]
+Funcion valorf <- f ( x )
+	valorf <- (x^2) - (8*x)+16    
+Fin Funcion
+
+Funcion valorfp <- fp ( x )
+	valorfp <- (2*x) -8
+Fin Funcion
+
+Algoritmo CriterioPrimeraDerivada
+	//2-Encontrar un punto critico c en (a,b)
+	c<-4
+	//3
+	Si fp(3)>=0 & fp(5)>=0 Entonces
+		Escribir "f tiene un maximo relativo en: " ,c
+	SiNo
+		//4
+		Si fp(3)<=0 & fp(5)>=0 Entonces
+			Escribir "f tiene un minimo relativo en: " ,c
+		//5	
+		SiNo
+			Escribir "f no tiene un minimo ni un máxim relativo en: " ,c
+		Fin Si
+	Fin Si
+	
+	Escribir "Fin del codigo"
+	
+FinAlgoritmo
